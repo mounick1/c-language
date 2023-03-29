@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main() {
+    int arr[] = {3, 5, 2, 8, 7, 6, 9, 4};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int evenArr[n], oddArr[n];
+    int evenCount = 0, oddCount = 0;
+    
+    for(int i = 0; i < n; i++) {
+        if(arr[i] % 2 == 0) {
+            evenArr[evenCount] = arr[i];
+            evenCount++;
+        } else {
+            oddArr[oddCount] = arr[i];
+            oddCount++;
+        }
+    }
+    
+    printf("Even elements: ");
+    for(int i = 0; i < evenCount; i++) {
+        printf("%d ", evenArr[i]);
+    }
+    
+    printf("\nOdd elements: ");
+    for(int i = 0; i < oddCount; i++) {
+        printf("%d ", oddArr[i]);
+    }
+    
+    return 0;
+}
