@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <limits.h>
+
+int main() {
+    int array[] = {10, 15, 90, 200, 110};
+    int n = sizeof(array) / sizeof(array[0]);
+    int maxDiff = INT_MIN; // initialize maxDiff to the smallest possible integer value
+    
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = i + 1; j < n; j++) {
+            int diff = array[j] - array[i];
+            if(diff > maxDiff) {
+                maxDiff = diff;
+            }
+        }
+    }
+    
+    printf("The maximum difference between two elements in the array is %d", maxDiff);
+    return 0;
+}
