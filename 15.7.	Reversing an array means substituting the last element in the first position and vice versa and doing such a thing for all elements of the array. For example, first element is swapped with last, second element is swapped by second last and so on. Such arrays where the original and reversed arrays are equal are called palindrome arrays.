@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int main() {
+    int arr[] = {1, 2, 3, 2, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int revArr[n];
+    bool isPalindrome = true;
+    
+    for(int i = 0; i < n; i++) {
+        revArr[i] = arr[n - 1 - i]; // reverse the array
+    }
+    
+    printf("Original array: ");
+    for(int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    
+    printf("\nReversed array: ");
+    for(int i = 0; i < n; i++) {
+        printf("%d ", revArr[i]);
+        if(revArr[i] != arr[i]) { // check if palindrome
+            isPalindrome = false;
+        }
+    }
+    
+    if(isPalindrome) {
+        printf("\nThe array is a palindrome.");
+    } else {
+        printf("\nThe array is not a palindrome.");
+    }
+    
+    return 0;
+}
