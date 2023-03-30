@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+
+void reverse(char*);
+
+int main()
+{
+    char str[100];
+    printf("Enter any string: ");
+    gets(str); // You can also use scanf("%s", str);
+    printf("The original string is: %s\n", str);
+
+    // Reverse the string
+    reverse(str);
+
+    printf("The reversed string is: %s\n", str);
+    return 0;
+}
+
+void reverse(char *str)
+{
+    int i, len;
+    char *begin_ptr, *end_ptr, ch;
+
+    len = strlen(str);
+
+    // Set the begin_ptr and end_ptr to start and end of the string
+    begin_ptr = str;
+    end_ptr = str;
+
+    // Move the end_ptr to the last character of the string
+    for (i = 0; i < len - 1; i++) {
+        end_ptr++;
+    }
+
+    // Swap the characters from start and end of the string
+    for (i = 0; i < len / 2; i++) {
+        ch = *end_ptr;
+        *end_ptr = *begin_ptr;
+        *begin_ptr = ch;
+
+        // Update the pointers for next iteration
+        begin_ptr++;
+        end_ptr--;
+    }
+}
