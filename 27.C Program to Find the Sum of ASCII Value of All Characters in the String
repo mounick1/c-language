@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[1000];
+    int sum = 0;
+    int len, i;
+    
+    printf("Enter the string: ");
+    fgets(str, 1000, stdin);
+    
+    len = strlen(str);
+    
+    for (i = 0; i < len; i++) {
+        sum += (int)str[i];  // add the ASCII value of the current character to sum
+    }
+    
+    printf("Sum of all characters: %d\n", sum);
+    
+    return 0;
+}
