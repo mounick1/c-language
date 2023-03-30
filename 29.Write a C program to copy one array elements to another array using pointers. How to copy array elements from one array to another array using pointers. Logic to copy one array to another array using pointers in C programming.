@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+   int array1[10] = {10, -1, 100, 90, 87, 0, 15, 10, 20, 30};
+   int array2[10];
+   int i;
+   int *p1, *p2;
+
+   p1 = array1;
+   p2 = array2;
+
+   printf("Array1: ");
+   for (i = 0; i < 10; i++) {
+      printf("%d ", *(p1 + i));
+   }
+
+   for (i = 0; i < 10; i++) {
+      *(p2 + i) = *(p1 + i);
+   }
+
+   printf("\nArray2: ");
+   for (i = 0; i < 10; i++) {
+      printf("%d ", *(p2 + i));
+   }
+
+   return 0;
+}
