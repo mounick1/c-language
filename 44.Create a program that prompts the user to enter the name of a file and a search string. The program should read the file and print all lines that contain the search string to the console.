@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_LINE_LENGTH 1000
+
+int main() {
+    char file_name[MAX_LINE_LENGTH], search_str[MAX_LINE_LENGTH];
+    FILE *file;
+    char line[MAX_LINE_LENGTH];
+
+    // Prompt the user for the file name and search string
+    printf("Enter the name of the file: ");
+    fgets(file_name, MAX_LINE_LENGTH, stdin);
+    file_name[strcspn(file_name, "\n")] = '\0'; // remove newline character
+    printf("Enter the search string: ");
+    fgets(search_str, MAX_LINE_LENGTH, stdin);
+    search_str[strcspn(search_str, "\n")] = '\0'; // remove newline character
+
+    // Open the file for reading
+    file = fopen(file_name, "r");
+    if (file == NULL) {
+        printf("Error: could not open file.\n");
+        return 1;
+    }
+
+    // Loop through each line in the file
+    while (fgets(line, MAX_LINE_LENGTH, file) != NULL) {
+        // Check if the line contains the search string
+        if (strstr(line, search_str) != NULL) {
+            printf("%s", line);
+        }
+    }
+
+    // Close the file
+    fclose(file);
+
+    return 0;
+}
