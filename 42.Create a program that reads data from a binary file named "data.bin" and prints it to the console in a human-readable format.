@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Data {
+    int id;
+    char name[50];
+    float score;
+};
+
+int main() {
+    FILE *data_file;
+    struct Data data;
+
+    // Open data.bin for reading in binary mode
+    data_file = fopen("data.bin", "rb");
+    if (data_file == NULL) {
+        printf("Error: could not open data file.\n");
+        return 1;
+    }
+
+    // Read and print each record in data.bin
+    while (fread(&data, sizeof(struct Data), 1, data_file) == 1) {
+        printf("ID: %d\n", data.id);
+        printf("Name: %s\n", data.name);
+        printf("Score: %.2f\n", data.score);
+        printf("\n");
+    }
+
+    // Close data.bin
+    fclose(data_file);
+
+    return 0;
+}
